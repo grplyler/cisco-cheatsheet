@@ -53,4 +53,19 @@ copy startup-config ftp://192.168.1.10/config.txt
 copy ftp://192.168.1.10/config.txt running-config
 ```
 
+### Remote Access
+
+**Configure SSH**
+
+```ios
+show ip ssh
+ip domain-name cisco.com
+crypto key generate rsa
+username admin secret ccna
+line vty 0 15
+transport input ssh
+login local
+exit
+ip ssh version 2
+```
 
