@@ -27,6 +27,7 @@ Most of the content so far is on this README.md document. Simply copy and paste 
 * [Trunks](#trunks)
   * [VLAN Trunk](#create-multi-switch-vlan-trunk)
   * [Trunk Verification](#trunk-verification)
+* [DTP](#DTP)
 
 ## FTP Server Usage
 
