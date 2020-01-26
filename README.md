@@ -57,9 +57,9 @@ password cisco
 login
 exit
 service password-encryption
+banner motd $ Authorized Access Only! And Godzilla will beat Kong any day $
+copy running-config startup-config
 ```
-
-
 
 **Backup config**
 ```
