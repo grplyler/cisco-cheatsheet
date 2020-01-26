@@ -84,6 +84,23 @@ ip ssh version 2
 exit
 ```
 
+**Basic Hardening***
+
+```
+conf t
+! Logout timer
+!
+line con 0
+ exec-timeout 5
+line vty 0 4
+ exec-timeout 5
+ 
+exit
+
+ip ssh time-out 60
+ip ssh authentication-retries 3
+```
+
 **Backup config**
 ```
 copy running-config startup-config
