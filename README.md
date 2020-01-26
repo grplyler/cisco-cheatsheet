@@ -159,6 +159,21 @@ switchport mode access
 switchport access vlan 99
 ```
 
+**IP Assignemnt**
+
+```
+cont t
+int fa0/24
+ip address 10.0.0.1 255.255.255.0
+end
+```
+
+**Verification**
+
+```
+show vlan brief
+```
+
 **Management VLAN**
 
 ```
