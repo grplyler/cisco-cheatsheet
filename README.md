@@ -34,6 +34,23 @@ Bootstrapping and hardening scripts for Cisco routers and Switches
     
 ## Cisco Cheatsheet
 
+**Basic Config**
+
+```
+configure terminal
+hostname S1
+enable secret class
+line console 0
+password cisco
+login
+exit
+line vty 0 4
+password cisco
+login
+exit
+service password-encryption
+```
+
 **Intialize a switch**
 
 ```
