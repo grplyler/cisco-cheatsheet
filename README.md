@@ -224,3 +224,11 @@ end
 
 *Note: Remember to set the native vlan (to 99 for instance) on each switch in the trunk so you don't get a native vlan mismatch warning*
 
+**Trunk Verification**
+
+```
+show interface trunk
+show interface g0/1 switchport
+```
+
+
