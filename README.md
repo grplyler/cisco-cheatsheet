@@ -8,8 +8,25 @@ Most of the content so far is on this README.md document. Simply copy and paste 
 ## Cheatsheet Navigation
 
 * [Setup](#Setup)
-  * [Intialize](#Initialize)
-  * [Basic Config](#Basic Config)
+  * [Intialize](#intialize)
+  * [Basic Config](#basic-config)
+  * [Configure SSH](#configure-ssh)
+  * [Basic Hardening](#basic-hardening)
+  * [Backup Config](#backup-config)
+  * [Restore Config](#restore-config)
+* [VLANs](#vlans)
+  * [Creation](#vlan-creation)
+  * [Port Assignment](#port-assignment)
+  * [IP Assignment](#ip-assignment)
+  * [Verification](#verification)
+  * [Management VLAN](#management-vlan)
+  * [Delete VLANs on File](#delete-vlans-on-file)
+  * [Delete VLANs in Memory](#delete-vlans-in-memory)
+* [DHCP](#dhcp)
+  * [Management DHCP](#management-dhcp)
+* [Trunks](#trunks)
+  * [VLAN Trunk](#create-multi-switch-vlan-trunk)
+  * [Trunk Verification](#trunk-verification)
 
 ## FTP Server Usage
 
@@ -109,13 +126,13 @@ ip ssh authentication-retries 3
 end
 ```
 
-**Backup config**
+#### Backup config
 ```
 copy running-config startup-config
 copy startup-config ftp://192.168.1.10/config.txt
 ```
 
-**Restore Config**
+#### Restore Config
 ```
 copy ftp://192.168.1.10/config.txt running-config
 ```
@@ -125,7 +142,7 @@ copy ftp://192.168.1.10/config.txt running-config
 ### VLANs
 ---
 
-**VLAN Creation**
+#### VLAN Creation
 
 ```
 conf t
@@ -141,7 +158,7 @@ name Students
 exit
 ```
 
-**Port Assignment**
+#### Port Assignment
 
 ```
 conf t
@@ -165,22 +182,22 @@ switchport mode access
 switchport access vlan 99
 ```
 
-**IP Assignemnt**
+#### IP Assignemnt
 
 ```
 cont t
-int fa0/24
+int vlan 99
 ip address 10.0.0.1 255.255.255.0
 end
 ```
 
-**Verification**
+#### Verification
 
 ```
 show vlan brief
 ```
 
-**Management VLAN**
+#### Management VLAN
 
 ```
 conf t
@@ -196,13 +213,13 @@ ip addr 10.0.0.1 255.255.255.0
 end
 ```
 
-**Delete VLANS on file**
+#### Delete VLANS on file
 
 ```
 delete vlan.dat
 ```
 
-**Delete VLANS in memory**
+#### Delete VLANS in memory
 *Warning: Make sure you move ports to another vlan or the will be unsable*
 
 ```
@@ -215,7 +232,7 @@ end
 ### DHCP
 ---
 
-**Management DHCP**
+#### Management DHCP
 
 *Workaround for CCNA labs at Liberty University since we can't change the LAB IP addresses*
 
@@ -232,7 +249,7 @@ end
 ### Trunks
 ---
 
-**Create multi-switch vlan trunk**
+#### Create multi-switch vlan trunk
 
 *S1*
 ```
@@ -246,7 +263,7 @@ end
 
 *Note: Remember to set the native vlan (to 99 for instance) on each switch in the trunk so you don't get a native vlan mismatch warning*
 
-**Trunk Verification**
+#### Trunk Verification
 
 ```
 show interface trunk
