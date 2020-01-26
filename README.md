@@ -170,5 +170,35 @@ no vlan 20
 end
 ```
 
+### DNS
+---
 
+** Management DNS **
+
+*Workaround for CCNA labs at Liberty University since we can't change the LAB IP addresses*
+
+```
+conf t
+ip domain name cisco.com
+ip dhcp excluded-address 10.0.0.1
+ip dhcp pool managementpool
+network 10.0.0.1 255.255.255.0
+default-router 10.0.0.1
+end
+```
+
+### Trunks
+---
+
+**Create multi-switch vlan trunk**
+
+*S1*
+```
+conf t
+interface Gi0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 99
+end
+```
 
