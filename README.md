@@ -34,6 +34,14 @@ Bootstrapping and hardening scripts for Cisco routers and Switches
     
 ## Cisco Cheatsheet
 
+**Intialize**
+
+```
+erase startup-config
+delete vlan.dat
+reload
+```
+
 **Basic Config**
 
 ```
@@ -51,13 +59,7 @@ exit
 service password-encryption
 ```
 
-**Intialize a switch**
 
-```
-erase startup-config
-delete vlan.dat
-reload
-```
 
 **Backup config**
 ```
