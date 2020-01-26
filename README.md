@@ -136,7 +136,7 @@ switchport access vlan 99
 delete vlan.dat
 ```
 
-** Delete VLANS in memory **
+**Delete VLANS in memory**
 *Warning: Make sure you move ports to another vlan or the will be unsable*
 
 ```
