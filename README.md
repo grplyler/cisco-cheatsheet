@@ -27,7 +27,10 @@ Most of the content so far is on this README.md document. Simply copy and paste 
 * [Trunks](#trunks)
   * [VLAN Trunk](#create-multi-switch-vlan-trunk)
   * [Trunk Verification](#trunk-verification)
-* [DTP](#DTP)
+* [Dynamic Trunking Protocol (DTP)](#dtp-dynamic-trunking-protocol)
+  * [Configure DTP](#configure-dtp)
+  * [Disable DTP](#disable-dtp)
+  * [Verify DTP](#verify-dtp)
 
 ## FTP Server Usage
 
