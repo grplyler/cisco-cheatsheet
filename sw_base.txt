@@ -1,1 +1,17 @@
-
+configure terminal
+no ip domain-lookup
+hostname S1
+enable secret class
+line console 0
+logging synchronous
+password cisco
+login
+exit
+line vty 0 4
+password cisco
+login
+exit
+service password-encryption
+banner motd $ Authorized Access Only! And Godzilla will beat Kong any day $
+exit
+copy running-config startup-config
