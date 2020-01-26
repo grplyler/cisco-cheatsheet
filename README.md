@@ -84,7 +84,7 @@ ip ssh version 2
 exit
 ```
 
-**Basic Hardening***
+**Basic Hardening**
 
 ```
 conf t
@@ -99,6 +99,7 @@ exit
 
 ip ssh time-out 60
 ip ssh authentication-retries 3
+end
 ```
 
 **Backup config**
