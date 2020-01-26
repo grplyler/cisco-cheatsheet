@@ -73,6 +73,7 @@ copy ftp://192.168.1.10/config.txt running-config
 ```
 
 ### Remote Access
+---
 
 **Configure SSH**
 
@@ -89,6 +90,7 @@ ip ssh version 2
 ```
 
 ### VLANs
+---
 
 **VLAN Creation**
 
