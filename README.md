@@ -9,6 +9,7 @@ Most of the content so far is on this README.md document. Simply copy and paste 
 
 * [Setup](#Setup)
   * [Intialize](#Initialize)
+  * [Basic Config](#Basic Config)
 
 ## FTP Server Usage
 
@@ -43,7 +44,7 @@ Most of the content so far is on this README.md document. Simply copy and paste 
 ### Setup
 ---
 
-**Intialize**
+#### Intialize
 
 ```
 erase startup-config
@@ -51,7 +52,7 @@ delete vlan.dat
 reload
 ```
 
-**Basic Config**
+#### Basic Config
 
 ```
 configure terminal
@@ -73,7 +74,7 @@ exit
 copy running-config startup-config
 ```
 
-**Configure SSH**
+#### Configure SSH
 
 ```
 show ip ssh
@@ -90,7 +91,7 @@ ip ssh version 2
 exit
 ```
 
-**Basic Hardening**
+#### Basic Hardening
 
 ```
 conf t
