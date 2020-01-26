@@ -31,3 +31,26 @@ Bootstrapping and hardening scripts for Cisco routers and Switches
     ```
     
     *Replace 192.168.1.10 with the IP of the computer connected to the switch or router.*
+    
+## Cisco Cheatsheet
+
+**Intialize a switch**
+
+```
+erase startup-config
+delete vlan.dat
+reload
+```
+
+**Backup config**
+```
+copy running-config startup-config
+copy startup-config ftp://192.168.1.10/config.txt
+```
+
+**Restore Config**
+```
+copy ftp://192.168.1.10/config.txt running-config
+```
+
+
