@@ -275,6 +275,7 @@ show interface g0/1 switchport
 ```
 
 ### DTP (Dynamic Trunking Protocol)
+---
 
 #### Configure DTP
 
