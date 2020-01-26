@@ -46,9 +46,11 @@ reload
 
 ```
 configure terminal
+no ip domain-lookup
 hostname S1
 enable secret class
 line console 0
+logging synchronous
 password cisco
 login
 exit
@@ -58,6 +60,7 @@ login
 exit
 service password-encryption
 banner motd $ Authorized Access Only! And Godzilla will beat Kong any day $
+exit
 copy running-config startup-config
 ```
 
@@ -77,16 +80,19 @@ copy ftp://192.168.1.10/config.txt running-config
 
 **Configure SSH**
 
-```ios
+```
 show ip ssh
+conf t
 ip domain-name cisco.com
 crypto key generate rsa
+
 username admin secret ccna
 line vty 0 15
 transport input ssh
 login local
 exit
 ip ssh version 2
+exit
 ```
 
 ### VLANs
