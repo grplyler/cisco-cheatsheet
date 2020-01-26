@@ -222,3 +222,5 @@ switchport trunk allowed vlan 99
 end
 ```
 
+*Note: Remember to set the native vlan (to 99 for instance) on each switch in the trunk so you don't get a native vlan mismatch warning*
+
