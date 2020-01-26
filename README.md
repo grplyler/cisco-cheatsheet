@@ -270,4 +270,31 @@ show interface trunk
 show interface g0/1 switchport
 ```
 
+### DTP (Dynamic Trunking Protocol)
 
+#### Configure DTP
+
+```
+conf t
+int gi0/1
+switchport mode dynamic auto
+end
+```
+
+#### Disable DTP
+
+*Usefull for connecting to devices that don't support Cisco propietary DTP*
+
+```
+conf t
+int gi0/1
+switchport mode trunk
+switchport nonegotiate
+end
+```
+
+#### Verify DTP
+
+```
+show dtp interface gi0/1
+```
