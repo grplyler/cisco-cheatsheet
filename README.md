@@ -34,6 +34,9 @@ Bootstrapping and hardening scripts for Cisco routers and Switches
     
 ## Cisco Cheatsheet
 
+### Setup
+---
+
 **Intialize**
 
 ```
