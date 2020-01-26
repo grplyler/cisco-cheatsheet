@@ -88,3 +88,63 @@ exit
 ip ssh version 2
 ```
 
+### VLANs
+
+** VLAN Creation **
+
+```
+conf t
+vlan 10
+name Faculty
+exit
+```
+
+```
+conf t
+vlan 20
+name Students
+exit
+```
+
+** Port Assignment **
+
+```
+conf t
+interface range Fa0/1-12
+switchport mode access
+switchport access vlan 10
+end
+```
+
+```
+conf t interface range Fa0/13-24
+switchport mode access
+switchport access vlan 20
+end
+```
+
+```
+conf t
+interface Gi0/1
+switchport mode access
+switchport access vlan 99
+```
+
+** Delete VLANS on file **
+
+```
+delete vlan.dat
+```
+
+** Delete VLANS in memory **
+*Warning: Make sure you move ports to another vlan or the will be unsable*
+
+```
+conf t
+no vlan 10
+no vlan 20
+end
+```
+
+
+
