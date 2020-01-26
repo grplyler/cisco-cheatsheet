@@ -173,7 +173,7 @@ end
 ### DNS
 ---
 
-** Management DNS **
+**Management DNS**
 
 *Workaround for CCNA labs at Liberty University since we can't change the LAB IP addresses*
 
