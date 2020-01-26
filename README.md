@@ -90,7 +90,7 @@ ip ssh version 2
 
 ### VLANs
 
-** VLAN Creation **
+**VLAN Creation**
 
 ```
 conf t
@@ -106,7 +106,7 @@ name Students
 exit
 ```
 
-** Port Assignment **
+**Port Assignment**
 
 ```
 conf t
@@ -130,7 +130,7 @@ switchport mode access
 switchport access vlan 99
 ```
 
-** Delete VLANS on file **
+**Delete VLANS on file**
 
 ```
 delete vlan.dat
