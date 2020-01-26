@@ -138,6 +138,22 @@ switchport mode access
 switchport access vlan 99
 ```
 
+**Management VLAN**
+
+```
+conf t
+vlan 99
+name Management
+exit
+interface Fa0/24
+switchport mode access
+switchport access vlan 99
+exit
+int vlan 99
+ip addr 10.0.0.1 255.255.255.0
+end
+```
+
 **Delete VLANS on file**
 
 ```
