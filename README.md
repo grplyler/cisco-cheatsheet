@@ -67,20 +67,6 @@ exit
 copy running-config startup-config
 ```
 
-**Backup config**
-```
-copy running-config startup-config
-copy startup-config ftp://192.168.1.10/config.txt
-```
-
-**Restore Config**
-```
-copy ftp://192.168.1.10/config.txt running-config
-```
-
-### Remote Access
----
-
 **Configure SSH**
 
 ```
@@ -97,6 +83,19 @@ exit
 ip ssh version 2
 exit
 ```
+
+**Backup config**
+```
+copy running-config startup-config
+copy startup-config ftp://192.168.1.10/config.txt
+```
+
+**Restore Config**
+```
+copy ftp://192.168.1.10/config.txt running-config
+```
+
+
 
 ### VLANs
 ---
