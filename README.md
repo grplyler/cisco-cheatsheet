@@ -288,7 +288,7 @@ end
 
 #### Disable DTP
 
-*Usefull for connecting to devices that don't support Cisco propietary DTP*
+*Usefull for connecting to devices that don't support Cisco propietary DTP or creating a static trunk*
 
 ```
 conf t
