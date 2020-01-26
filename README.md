@@ -108,7 +108,7 @@ ip ssh version 2
 exit
 ```
 
-#### Basic Hardening
+#### Basic Hardening (Work Needed)
 
 ```
 conf t
