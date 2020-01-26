@@ -201,6 +201,19 @@ end
 show vlan brief
 ```
 
+#### Voice and Data VLAN
+
+*Assuming Data on VLAN 10, Voice on VLAN 20*
+
+```
+conf t
+int Fa0/4
+switchport mode access
+switchport access vlan 10
+switchport voice vlan 20
+end
+```
+
 #### Management VLAN
 
 ```
@@ -285,6 +298,16 @@ int gi0/1
 switchport mode dynamic auto
 end
 ```
+
+**or**
+
+```
+conf t
+int gi0/1
+switchport mode dynamic desirable
+end
+```
+
 
 #### Disable DTP
 
