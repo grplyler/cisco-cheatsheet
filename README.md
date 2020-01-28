@@ -31,6 +31,8 @@ Most of the content so far is on this README.md document. Simply copy and paste 
   * [Configure DTP](#configure-dtp)
   * [Disable DTP](#disable-dtp)
   * [Verify DTP](#verify-dtp)
+* [Routing](#routing)
+  * [Sub-Interface Configuration](#sub-interface-configuration)
 
 ## FTP Server Usage
 
