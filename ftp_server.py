@@ -12,7 +12,7 @@ def main():
 
     # anonymous use (WARNING, this will give an anonymous user write access for convienience.)
     # Use at your own risk.
-    authorizer.add_anonymous(os.getcwd(),  perm='elradfmwMT')
+    authorizer.add_anonymous(os.path.join(os.getcwd(), './uploads'),  perm='elradfmwMT')
 
     # Instantiate FTP handler class
     handler = FTPHandler
