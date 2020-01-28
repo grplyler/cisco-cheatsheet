@@ -60,7 +60,7 @@ Most of the content so far is on this README.md document. Simply copy and paste 
     
     *Replace 192.168.1.10 with the IP of the computer connected to the switch or router.*
     
-## Cisco Cheatsheet
+## Cisco Cheatsheet & Snippets
 
 ### Setup
 ---
@@ -325,4 +325,37 @@ end
 
 ```
 show dtp interface gi0/1
+```
+
+### Routing
+---
+
+#### Sub-Interface Configuration
+
+*Creates a multiple sub-interfaces on a router switch to enable inter-vlan routing.*
+
+```
+conf t
+interface G0/0/1.10
+description Default Gateway for VLAN 10
+encapsulation dot1Q 10
+ip add 192.168.10.1 255.255.255.0
+exit
+
+interface G0/0/1.20
+description Default Gateway for VLAN 20
+encapsulation dot1Q 20
+ip addr 192.168.20.1 255.255.255.0
+exit
+
+interface G0/0/1.99
+description Default Gateway for VLAN 99
+encapsulation dot1Q 99
+ip addr 192.168.99.1 255.255.255.0
+exit
+
+interface G0/0/1
+description Trunk link to S1
+no shut
+end
 ```
