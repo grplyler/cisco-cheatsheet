@@ -334,7 +334,7 @@ show dtp interface gi0/1
 
 #### Sub-Interface Configuration
 
-*Creates a multiple sub-interfaces on a router port to enable inter-vlan routing.*
+*Creates multiple sub-interfaces on a router port to enable inter-vlan routing.*
 
 ```
 conf t
