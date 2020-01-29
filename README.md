@@ -23,7 +23,7 @@ Most of the content so far is on this README.md document. Simply copy and paste 
   * [Delete VLANs on File](#delete-vlans-on-file)
   * [Delete VLANs in Memory](#delete-vlans-in-memory)
 * [DHCP](#dhcp)
-  * [Management DHCP](#management-dhcp)
+  * [Create DHCP Pool](#create-dhcp-pool)
 * [Trunks](#trunks)
   * [VLAN Trunk](#create-multi-switch-vlan-trunk)
   * [Trunk Verification](#trunk-verification)
@@ -251,7 +251,7 @@ end
 ### DHCP
 ---
 
-#### Management DHCP
+#### Create DHCP Pool
 
 *Workaround for CCNA labs at Liberty University since we can't change the LAB IP addresses*
 
@@ -265,15 +265,25 @@ default-router 10.0.0.1
 end
 ```
 
+#### Delete DHCP Pool
+
+```
+conf t
+no ip dhcp pool managementpool
+end
+```
+
 ### Trunks
 ---
 
 #### Create multi-switch vlan trunk
 
 *S1*
+
 ```
 conf t
 interface Gi0/1
+description Trunk Line to S2 Gi0/1
 switchport mode trunk
 switchport trunk native vlan 99
 switchport trunk allowed vlan 99
@@ -335,6 +345,8 @@ show dtp interface gi0/1
 #### Sub-Interface Configuration
 
 *Creates multiple sub-interfaces on a router port to enable inter-vlan routing.*
+
+*Note: `encapsulation dot1q` must be called on a sub interface before an IP can be assigned to it.*
 
 ```
 conf t
