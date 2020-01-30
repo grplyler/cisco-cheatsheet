@@ -10,10 +10,17 @@ Most of the content so far is on this README.md document. Simply copy and paste 
 * [Setup](#Setup)
   * [Intialize](#intialize)
   * [Basic Config](#basic-config)
+  * [Set Clock](#set-clock)
   * [Configure SSH](#configure-ssh)
   * [Basic Hardening](#basic-hardening)
   * [Backup Config](#backup-config)
   * [Restore Config](#restore-config)
+  * [Nuking](#nuking)
+* [Interfaces](#interfaces)
+  * [Interface Selection](#interface-selection)
+  * [Interface Range](#interface-range)
+  * [Interface Verification](#interface-verification)
+  * [Remove IP Addresses](#remove-ip-addresses)
 * [VLANs](#vlans)
   * [Creation](#vlan-creation)
   * [Port Assignment](#port-assignment)
@@ -33,34 +40,8 @@ Most of the content so far is on this README.md document. Simply copy and paste 
   * [Verify DTP](#verify-dtp)
 * [Routing](#routing)
   * [Sub-Interface Configuration](#sub-interface-configuration)
+* [FTP Server](#ftp-server)
 
-## FTP Server Usage
-
-1. Clone the repo: 
-
-    ```
-    git clone https://github.com/grplyler/cisco-utils
-    ```
-    
-2. Install python requirements (for ftp server):
-
-    ```
-    pip install -r requirements.txt
-    ```
-    
-3. Run python ftp_server.py
-
-    ```
-    python3 ftp_server.py
-    ```
-    
-4. Pull a script onto a network device (WARNING: Backup to avoid any losses)
-
-    ```
-    Switch#> copy ftp://192.168.1.10/sw_base.txt running-config
-    ```
-    
-    *Replace 192.168.1.10 with the IP of the computer connected to the switch or router.*
     
 ## Cisco Cheatsheet & Snippets
 
@@ -95,6 +76,26 @@ service password-encryption
 banner motd $ Authorized Access Only! And Godzilla will beat Kong any day $
 exit
 copy running-config startup-config
+```
+
+#### Set Clock
+
+*Show Clock*
+
+```
+show clock
+```
+
+*Sets clock to eastern US time*
+
+```
+clock timezone EST -5
+```
+
+*Revert to Default Timezone*
+
+```
+no clock timezone
 ```
 
 #### Configure SSH
@@ -143,7 +144,77 @@ copy startup-config ftp://192.168.1.10/config.txt
 copy ftp://192.168.1.10/config.txt running-config
 ```
 
+### Interfaces
+---
 
+
+#### Interface Selection
+
+*Assign and IP address to a port
+```
+conf t
+int f0/1
+ip addr 192.168.10.11 255.255.255.0
+end
+
+```
+
+#### Interface Ranges
+
+*Assign and IP address to a port*
+```
+conf t
+int f0/1
+ip addr 192.168.10.11 255.255.255.0
+end
+```
+
+*Select Single Range and Assign to a VLAN*
+```
+conf t
+int range f0/1-12
+switchport mode access
+switch access vlan 10
+end
+```
+
+```
+conf t
+int range f0/13-24
+switchport mode access
+switchport access vlan 20
+end
+```
+
+*Select Multiple Interface Ranges and Move to a VLAN*
+```
+conf t
+int range f0/1-4,g0/1,f0/16-20
+switchport mode access
+switchport access vlan 10
+end
+```
+
+### Interface Verification
+
+```
+show ip interface brief
+```
+
+*or*
+
+```
+show ip int br
+```
+
+#### Remove IP Addresses
+
+```
+conf t
+int f0/1
+no ip addr
+end
+```
 
 ### VLANs
 ---
@@ -265,6 +336,95 @@ default-router 10.0.0.1
 end
 ```
 
+#### Create VLAN DHCP
+
+*Creates a Seperate DHCP Pool for each VLAN*
+
+*Create VLANS*
+```
+conf t
+vlan 10
+name Management
+vlan 20
+name Sales
+vlan 30
+name Operations
+end
+```
+
+*Configure SVI's and IP Address*
+
+| VLAN | IP Address | Gateway
+|------|------------|--------|
+| 10   | 192.168.10.254 | 192.168.10.1
+| 20 | 192.168.20.254 | 192.168.20.1|
+| 30 | 192.168.30.254 | 192.168.30.1|
+
+```
+conf t
+int vlan 10
+ip address 192.168.10.254 255.255.255.0
+ip default-gateway 192.168.10.1
+no shut
+
+int vlan 20
+ip address 192.168.20.254 255.255.255.0
+ip default-gateway 192.168.20.1
+no shut
+
+int vlan 30
+ip address 192.168.30.254 255.255.255.0
+ip default-gateway 192.168.30.1
+no shut
+end
+```
+
+*Add interfaces to VLANS, 8 ports per vlan*
+
+```
+conf t
+int range f0/1-7
+switchport mode access
+switchport access vlan 10
+
+int range f0/8-15
+switchport mode access
+switchport access vlan 20
+
+int range f0/16-24
+switchport mode access
+switchport access vlan 30
+end
+```
+
+*Create DHCP Pools for each vlan*
+
+```
+conf t
+ip domain name cisco.com
+ip dhcp excluded-address 192.168.10.1
+ip dhcp pool vlan10pool
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+import all
+
+
+ip dhcp excluded-address 192.168.20.1
+ip dhcp pool vlan20pool
+network 192.168.20.0 255.255.255.0
+default-router 192.168.20.1
+import all
+
+ip dhcp excluded-address 192.168.30.1
+ip dhcp pool vlan30pool
+network 192.168.30.0 255.255.255.0
+default-router 192.168.30.1
+import all
+end
+```
+
+Now when a device plugs into a port `f0/4` for instance and performs a DHCP request, it should get an IP like `192.168.10.3` because it is plugged into the ports assigned to VLAN 10
+
 #### Delete DHCP Pool
 
 ```
@@ -373,3 +533,31 @@ description Trunk link to S1
 no shut
 end
 ```
+
+## FTP Server Usage
+
+1. Clone the repo: 
+
+    ```
+    git clone https://github.com/grplyler/cisco-utils
+    ```
+    
+2. Install python requirements (for ftp server):
+
+    ```
+    pip install -r requirements.txt
+    ```
+    
+3. Run python ftp_server.py
+
+    ```
+    python3 ftp_server.py
+    ```
+    
+4. Pull a script onto a network device (WARNING: Backup to avoid any losses)
+
+    ```
+    Switch#> copy ftp://192.168.1.10/sw_base.txt running-config
+    ```
+    
+    *Replace 192.168.1.10 with the IP of the computer connected to the switch or router.*
