@@ -146,7 +146,7 @@ copy ftp://192.168.1.10/config.txt running-config
 
 #### Nuking (Password Recovery)
 
-*Perform and Boot Interupt to Recover a lost or unknown password*
+*Perform a Boot Interupt to Recover a lost or unknown password*
 
 **WARNING**: This operation will delete all current config on the device
 
@@ -178,7 +178,7 @@ copy ftp://192.168.1.10/config.txt running-config
 
 #### Interface Selection
 
-*Assign and IP address to a port
+*Assign and IP address to a port*
 ```
 conf t
 int f0/1
