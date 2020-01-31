@@ -15,7 +15,7 @@ Most of the content so far is on this README.md document. Simply copy and paste 
   * [Basic Hardening](#basic-hardening)
   * [Backup Config](#backup-config)
   * [Restore Config](#restore-config)
-  * [Nuking](#nuking)
+  * [Nuking](#nuking-password-recovery)
 * [Interfaces](#interfaces)
   * [Interface Selection](#interface-selection)
   * [Interface Range](#interface-range)
@@ -143,6 +143,34 @@ copy startup-config ftp://192.168.1.10/config.txt
 ```
 copy ftp://192.168.1.10/config.txt running-config
 ```
+
+#### Nuking (Password Recovery)
+
+*Perform and Boot Interupt to Recover a lost or unknown password*
+
+**WARNING**: This operation will delete all current config on the device
+
+1. Ensure Console Cable is connected at 9600 Baudrate
+2. Backup config if you need
+3. Unplug Power
+4. Wait for a few seconds
+5. Re-insert the power cord to the switch
+6. Within 15 seconds, hold the `Mode` button until the green flashing light flashes amber and then returns to flashing green. Release the `Mode` button.
+7. Something like the following should display:
+
+    ```
+    initialize the flash file system, and finish loading the operating system software#
+    
+    flash_init
+    load_helper
+    boot
+    ```
+8. Run `flash_init`
+9. Run `copy flash:config.text flash:config.text.old`
+10. Run `boot`
+
+    The device should now boot with no config and grant you access to it.
+
 
 ### Interfaces
 ---
