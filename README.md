@@ -31,7 +31,6 @@
   * [Delete VLANs on File](#delete-vlans-on-file)
   * [Delete VLANs in Memory](#delete-vlans-in-memory)
   * [Inter-VLAN Routing](#inter-vlan-routing)
-  (#delete-vlans-in-memory)
 * [DHCP](#dhcp)
   * [Create DHCP Pool](#create-dhcp-pool)
   * [Create VLAN DHCP](#create-vlan-dhcp)
