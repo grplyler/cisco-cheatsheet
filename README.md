@@ -5,7 +5,7 @@
 [Work in Progress] Bootstrapping, hardening, and cheatsheet scripts for Cisco routers.
 Most of the content so far is on this README.md document. Simply copy and paste the command references for the features you need to fire up the FTP server to pull then directly onto the network appliance.
 
-## Cheatsheet Navigation
+## Navigation
 
 * [Setup](#Setup)
   * [Intialize](#intialize)
