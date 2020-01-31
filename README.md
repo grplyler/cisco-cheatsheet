@@ -30,6 +30,8 @@
   * [Management VLAN](#management-vlan)
   * [Delete VLANs on File](#delete-vlans-on-file)
   * [Delete VLANs in Memory](#delete-vlans-in-memory)
+  * [Inter-VLAN Routing](#inter-vlan-routing)
+  (#delete-vlans-in-memory)
 * [DHCP](#dhcp)
   * [Create DHCP Pool](#create-dhcp-pool)
   * [Create VLAN DHCP](#create-vlan-dhcp)
@@ -354,6 +356,38 @@ no vlan 20
 end
 ```
 
+#### Inter-VLAN Routing
+
+*Creates multiple sub-interfaces on a router port to enable inter-vlan routing.*
+
+*Note: `encapsulation dot1q` must be called on a sub interface before an IP can be assigned to it.*
+
+```
+conf t
+interface G0/0/1.10
+description Default Gateway for VLAN 10
+encapsulation dot1Q 10
+ip add 192.168.10.1 255.255.255.0
+exit
+
+interface G0/0/1.20
+description Default Gateway for VLAN 20
+encapsulation dot1Q 20
+ip addr 192.168.20.1 255.255.255.0
+exit
+
+interface G0/0/1.99
+description Default Gateway for VLAN 99
+encapsulation dot1Q 99
+ip addr 192.168.99.1 255.255.255.0
+exit
+
+interface G0/0/1
+description Trunk link to S1
+no shut
+end
+```
+
 ### DHCP
 ---
 
@@ -538,41 +572,6 @@ end
 
 ```
 show dtp interface gi0/1
-```
-
-### Routing
----
-
-#### Sub-Interface Configuration
-
-*Creates multiple sub-interfaces on a router port to enable inter-vlan routing.*
-
-*Note: `encapsulation dot1q` must be called on a sub interface before an IP can be assigned to it.*
-
-```
-conf t
-interface G0/0/1.10
-description Default Gateway for VLAN 10
-encapsulation dot1Q 10
-ip add 192.168.10.1 255.255.255.0
-exit
-
-interface G0/0/1.20
-description Default Gateway for VLAN 20
-encapsulation dot1Q 20
-ip addr 192.168.20.1 255.255.255.0
-exit
-
-interface G0/0/1.99
-description Default Gateway for VLAN 99
-encapsulation dot1Q 99
-ip addr 192.168.99.1 255.255.255.0
-exit
-
-interface G0/0/1
-description Trunk link to S1
-no shut
-end
 ```
 
 ## FTP Server Usage
