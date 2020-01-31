@@ -184,7 +184,6 @@ conf t
 int f0/1
 ip addr 192.168.10.11 255.255.255.0
 end
-
 ```
 
 #### Interface Ranges
