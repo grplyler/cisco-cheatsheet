@@ -40,7 +40,7 @@ Most of the content so far is on this README.md document. Simply copy and paste 
   * [Verify DTP](#verify-dtp)
 * [Routing](#routing)
   * [Sub-Interface Configuration](#sub-interface-configuration)
-* [FTP Server](#ftp-server)
+* [FTP Server](#ftp-server-usage)
 
     
 ## Cisco Cheatsheet & Snippets
