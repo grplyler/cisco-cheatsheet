@@ -257,6 +257,7 @@ conf t
 interface Gi0/1
 switchport mode access
 switchport access vlan 99
+end
 ```
 
 #### IP Assignemnt
