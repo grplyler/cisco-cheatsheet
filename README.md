@@ -2,8 +2,9 @@
 
 **Warning, use at your own risk. I created these scripts with an educational mindset while studying for my CCNA**
 
-[Work in Progress] Bootstrapping, hardening, and cheatsheet scripts for Cisco routers.
-Most of the content so far is on this README.md document. Simply copy and paste the command references for the features you need to fire up the FTP server to pull then directly onto the network appliance.
+[Work in Progress] Bootstrapping, hardening, and cheatsheet config/scripts for Cisco switches and routers.
+
+**Handy** FTP Server (python pftpdlib) included for backing up and restoring your config
 
 ## Navigation
 
