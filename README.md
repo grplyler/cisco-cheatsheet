@@ -2,7 +2,7 @@
 
 **Warning, use at your own risk. I created these scripts with an educational mindset while studying for my CCNA**
 
-[Work in Progress] Bootstrapping, hardening, and cheatsheet config/scripts for Cisco switches and routers.
+[Work in Progress] Bootstrapping, hardening, and cheatsheet config/scripts for Cisco switches and routers. Built for certification studies and daily reference.
 
 **Handy** FTP Server (python pftpdlib) included for backing up and restoring your config
 
@@ -61,6 +61,8 @@ erase startup-config
 delete vlan.dat
 reload
 ```
+
+**Note:** Remeber to say "no" to saving running config on reload. If you say yes, running config will be saved and you wont be working with fresh config on reload.
 
 #### Basic Config
 
