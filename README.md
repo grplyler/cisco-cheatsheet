@@ -31,6 +31,9 @@ Most of the content so far is on this README.md document. Simply copy and paste 
   * [Delete VLANs in Memory](#delete-vlans-in-memory)
 * [DHCP](#dhcp)
   * [Create DHCP Pool](#create-dhcp-pool)
+  * [Create VLAN DHCP](#create-vlan-dhcp)
+  * [Verify DHCP Pool](#verify-dhcp-pool)
+  * [Delete DHCP Pool](#delete-dhcp-pool)
 * [Trunks](#trunks)
   * [VLAN Trunk](#create-multi-switch-vlan-trunk)
   * [Trunk Verification](#trunk-verification)
@@ -452,6 +455,12 @@ end
 ```
 
 Now when a device plugs into a port `f0/4` for instance and performs a DHCP request, it should get an IP like `192.168.10.3` because it is plugged into the ports assigned to VLAN 10
+
+#### Verify DHCP Pool
+
+```
+show ip dhcp pool
+```
 
 #### Delete DHCP Pool
 
