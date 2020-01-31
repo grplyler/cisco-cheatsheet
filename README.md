@@ -11,8 +11,9 @@
 * [Setup](#Setup)
   * [Intialize](#intialize)
   * [Basic Config](#basic-config)
-  * [Set Clock](#set-clock)
+  * [Basic Security](#basic-security)
   * [Configure SSH](#configure-ssh)
+  * [Set Clock](#set-clock)
   * [Basic Hardening](#basic-hardening)
   * [Backup Config](#backup-config)
   * [Restore Config](#restore-config)
@@ -67,9 +68,20 @@ reload
 configure terminal
 no ip domain-lookup
 hostname S1
-enable secret class
 line console 0
 logging synchronous
+exit
+banner motd $ Authorized Access Only! And Godzilla will beat Kong any day $
+exit
+copy running-config startup-config
+```
+
+#### Basic Security
+
+```
+conf t
+enable secret class
+line console 0
 password cisco
 login
 exit
@@ -78,9 +90,24 @@ password cisco
 login
 exit
 service password-encryption
-banner motd $ Authorized Access Only! And Godzilla will beat Kong any day $
+end
+```
+
+#### Configure SSH
+
+```
+show ip ssh
+conf t
+ip domain-name cisco.com
+crypto key generate rsa
+
+username admin secret ccna
+line vty 0 15
+transport input ssh
+login local
 exit
-copy running-config startup-config
+ip ssh version 2
+exit
 ```
 
 #### Set Clock
@@ -101,23 +128,6 @@ clock timezone EST -5
 
 ```
 no clock timezone
-```
-
-#### Configure SSH
-
-```
-show ip ssh
-conf t
-ip domain-name cisco.com
-crypto key generate rsa
-
-username admin secret ccna
-line vty 0 15
-transport input ssh
-login local
-exit
-ip ssh version 2
-exit
 ```
 
 #### Basic Hardening (Work Needed)
