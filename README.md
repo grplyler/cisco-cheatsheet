@@ -46,6 +46,8 @@
   * [Verify DTP](#verify-dtp)
 * [Routing](#routing)
   * [Sub-Interface Configuration](#sub-interface-configuration)
+* [Spanning Tree Protocol](#spaning-tree-protocol)
+* [EtherChannel](#etherchannel)
 * [FTP Server](#ftp-server-usage)
 
     
