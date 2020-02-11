@@ -418,6 +418,24 @@ default-router 10.0.0.1
 end
 ```
 
+```
+conf t
+ip dhcp excluded-address 192.168.10.1
+ip dhcp excluded-address 192.168.10.254
+ip dhcp pool office-pool-1
+network 192.168.10.0 255.255.255.0
+default-router 192.168.10.1
+dns-server 192.168.5.5
+domain-name linux.org
+end
+```
+
+**DCHP with Subnetted networks**
+
+```
+WIP
+```
+
 #### Create VLAN DHCP
 
 *Creates a Seperate DHCP Pool for each VLAN*
