@@ -436,6 +436,14 @@ end
 WIP
 ```
 
+#### DHCP Verification
+
+```
+show running-config | section dhcp
+shpw ip dhcp binding
+show ip dhcp server statistics
+```
+
 #### Create VLAN DHCP
 
 *Creates a Seperate DHCP Pool for each VLAN*
