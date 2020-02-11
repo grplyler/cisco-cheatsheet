@@ -36,6 +36,7 @@
   * [Create DHCP Pool](#create-dhcp-pool)
   * [DHCP Verification](#dhcp-verification)
   * [Disable DHCP](#disable-dhcp)
+  * [Re-enable DHCP](#re-enabled-dhcp)
   * [Create VLAN DHCP](#create-vlan-dhcp)
   * [Verify DHCP Pool](#verify-dhcp-pool)
   * [Delete DHCP Pool](#delete-dhcp-pool)
@@ -440,11 +441,19 @@ shpw ip dhcp binding
 show ip dhcp server statistics
 ```
 
-### Disable DHCP
+#### Disable DHCP
 
 ```
 conf t
 no service dhcp
+end
+```
+
+#### Re-enabled DHCP
+
+```
+conf t
+service dhcp
 end
 ```
 
