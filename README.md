@@ -34,6 +34,8 @@
   * [Inter-VLAN Routing](#inter-vlan-routing)
 * [DHCP](#dhcp)
   * [Create DHCP Pool](#create-dhcp-pool)
+  * [DHCP Verification](#dhcp-verification)
+  * [Disable DHCP](#disable-dhcp)
   * [Create VLAN DHCP](#create-vlan-dhcp)
   * [Verify DHCP Pool](#verify-dhcp-pool)
   * [Delete DHCP Pool](#delete-dhcp-pool)
@@ -430,18 +432,20 @@ domain-name linux.org
 end
 ```
 
-**DCHP with Subnetted networks**
-
-```
-WIP
-```
-
 #### DHCP Verification
 
 ```
 show running-config | section dhcp
 shpw ip dhcp binding
 show ip dhcp server statistics
+```
+
+### Disable DHCP
+
+```
+conf t
+no service dhcp
+end
 ```
 
 #### Create VLAN DHCP
