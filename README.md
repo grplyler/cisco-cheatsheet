@@ -43,6 +43,9 @@
 * [Trunks](#trunks)
   * [VLAN Trunk](#create-multi-switch-vlan-trunk)
   * [Trunk Verification](#trunk-verification)
+* [EtherChannel](#etherchannel)
+  * [Configure EtherChannel](#configure-etherchannel)
+  * [Verify EtherChannel](#verify-etherchannel)
 * [Dynamic Trunking Protocol (DTP)](#dtp-dynamic-trunking-protocol)
   * [Configure DTP](#configure-dtp)
   * [Disable DTP](#disable-dtp)
@@ -584,6 +587,35 @@ end
 ```
 show interface trunk
 show interface g0/1 switchport
+```
+
+### EtherChannel
+---
+
+Etherchannel protocols LACP and PAgP configure multiple physical interfaces and links to act as one logical one. You can configure up to 8 ports to act as a single link. This increases bandwidth and improves redundancy.
+
+
+*Note: `mode active` sets the etherchannel group to use the LACP protocol*
+
+#### Configure EtherChannel
+
+*Configure etherchannel between two switches connected with two ethernet cables.*
+```
+conf t
+int range f/1-2
+channel-group 1 mode active
+exit
+int port-channel 1
+switchport mode trunk
+switchport trunk allowed vlan 1,2,20
+```
+
+
+#### Verify EtherChannel
+
+```
+show interfaces trunk
+show etherchannel summary
 ```
 
 ### DTP (Dynamic Trunking Protocol)
