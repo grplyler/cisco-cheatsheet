@@ -602,7 +602,7 @@ Etherchannel protocols LACP and PAgP configure multiple physical interfaces and 
 *Configure etherchannel between two switches connected with two ethernet cables.*
 ```
 conf t
-int range f/1-2
+int range f0/1-2
 channel-group 1 mode active
 exit
 int port-channel 1
