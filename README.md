@@ -4,9 +4,28 @@
 
 A Cisco Cheatsheet for bootstrapping, boilerplate, hardening, and configuring Cisco routers and switches.
 
-**Handy** FTP Server (python pftpdlib) included for backing up and restoring your config
+Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included for backing up and restoring your config
 
-## Navigation
+## Quick Navigtation
+
+### Sections
+  * Basic Networking
+    * [Basic Setup](#setup)
+    * [Interfaces](#interfaces)
+    * [DHCP](#dhcp)
+  * Intermediate Networking
+    * [VLANs](#vlans)
+    * [Trunks](#trunks)
+    * [Etherchannel](#etherchannel)
+    * [Dynamic Trunking Protocol (DTP)](#dtp-dynamic-trunking-protocol)
+    * [Routing](#routing)
+    * [Spanning Tree Protocol](#spaning-tree-protocol)
+    
+  * [Advanced Networking](#advanced-networking)<br>
+    Enterprise Networking , Security, and Automation
+    
+
+## Full Navigation
 
 * [Setup](#Setup)
   * [Intialize](#intialize)
@@ -54,6 +73,9 @@ A Cisco Cheatsheet for bootstrapping, boilerplate, hardening, and configuring Ci
   * [Sub-Interface Configuration](#sub-interface-configuration)
 * [Spanning Tree Protocol](#spaning-tree-protocol)
 * [FTP Server](#ftp-server-usage)
+* [Advanced Networking](#advanced-networking)
+  * [OSPFv2](#ospfv2)
+  
 
     
 ## Cisco Cheatsheet & Snippets
@@ -684,3 +706,14 @@ show dtp interface gi0/1
     ```
     
     *Replace 192.168.1.10 with the IP of the computer connected to the switch or router.*
+
+## Advanced Networking
+
+### OSPFv2
+
+#### All Commands
+
+```
+show ip ospf neighbor
+show ip ospf database 
+```
