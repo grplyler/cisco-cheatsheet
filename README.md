@@ -2,7 +2,7 @@
 
 **Warning, use at your own risk. I created these scripts with an educational mindset while studying for my CCNA**
 
-[Work in Progress] Bootstrapping, hardening, and cheatsheet config/scripts for Cisco switches and routers. Built for certification studies and daily reference.
+A Cisco Cheatsheet for bootstrapping, boilerplate, hardening, and configuring Cisco routers and switches.
 
 **Handy** FTP Server (python pftpdlib) included for backing up and restoring your config
 
