@@ -22,58 +22,67 @@ Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included 
     * [Spanning Tree Protocol](#spaning-tree-protocol)
     
   * [Advanced Networking](#advanced-networking)
+    * [OSPFv2](#ospfv2)
 
 ## Full Navigation
 
-* [Setup](#Setup)
+* [Setup](#setup)
   * [Intialize](#intialize)
   * [Basic Config](#basic-config)
   * [Basic Security](#basic-security)
   * [Configure SSH](#configure-ssh)
   * [Set Clock](#set-clock)
-  * [Basic Hardening](#basic-hardening)
-  * [Backup Config](#backup-config)
+  * [Basic Hardening (Work Needed)](#basic-hardening-work-needed)
+  * [Backup config](#backup-config)
   * [Restore Config](#restore-config)
-  * [Nuking](#nuking-password-recovery)
+  * [Nuking (Password Recovery)](#nuking-password-recovery)
 * [Interfaces](#interfaces)
   * [Interface Selection](#interface-selection)
-  * [Interface Range](#interface-range)
-  * [Interface Verification](#interface-verification)
+  * [Interface Ranges](#interface-ranges)
+* [Interface Verification](#interface-verification)
   * [Remove IP Addresses](#remove-ip-addresses)
 * [VLANs](#vlans)
-  * [Creation](#vlan-creation)
+  * [VLAN Creation](#vlan-creation)
   * [Port Assignment](#port-assignment)
-  * [IP Assignment](#ip-assignment)
+  * [IP Assignemnt](#ip-assignemnt)
   * [Verification](#verification)
+  * [Voice and Data VLAN](#voice-and-data-vlan)
   * [Management VLAN](#management-vlan)
-  * [Delete VLANs on File](#delete-vlans-on-file)
-  * [Delete VLANs in Memory](#delete-vlans-in-memory)
+  * [Delete VLANS on file](#delete-vlans-on-file)
+  * [Delete VLANS in memory](#delete-vlans-in-memory)
   * [Inter-VLAN Routing](#inter-vlan-routing)
 * [DHCP](#dhcp)
   * [Create DHCP Pool](#create-dhcp-pool)
   * [DHCP Verification](#dhcp-verification)
   * [Disable DHCP](#disable-dhcp)
-  * [Re-enable DHCP](#re-enabled-dhcp)
+  * [Re-enabled DHCP](#re-enabled-dhcp)
   * [Create VLAN DHCP](#create-vlan-dhcp)
   * [Verify DHCP Pool](#verify-dhcp-pool)
   * [Delete DHCP Pool](#delete-dhcp-pool)
 * [Trunks](#trunks)
-  * [VLAN Trunk](#create-multi-switch-vlan-trunk)
+  * [Create multi-switch vlan trunk](#create-multi-switch-vlan-trunk)
   * [Trunk Verification](#trunk-verification)
 * [EtherChannel](#etherchannel)
   * [Configure EtherChannel](#configure-etherchannel)
   * [Verify EtherChannel](#verify-etherchannel)
-* [Dynamic Trunking Protocol (DTP)](#dtp-dynamic-trunking-protocol)
+* [DTP (Dynamic Trunking Protocol)](#dtp-dynamic-trunking-protocol)
   * [Configure DTP](#configure-dtp)
   * [Disable DTP](#disable-dtp)
   * [Verify DTP](#verify-dtp)
-* [Routing](#routing)
-  * [Sub-Interface Configuration](#sub-interface-configuration)
-* [Spanning Tree Protocol](#spaning-tree-protocol)
-* [FTP Server](#ftp-server-usage)
+* [FTP Server Usage](#ftp-server-usage)
 * [Advanced Networking](#advanced-networking)
-  * [OSPFv2](#ospfv2)
-  
+    * [OSPFv2](#ospfv2)
+      * [OSPF Router IDs](#ospf-router-ids)
+          * [All Commands](#all-commands)
+          * [Enable router OSPF process](#enable-router-ospf-process)
+          * [Configure Loopback](#configure-loopback)
+          * [Configure OSPF Router ID](#configure-ospf-router-id)
+          * [Modify OSPF router ID](#modify-ospf-router-id)
+      * [OSPFv2 - Point-to-Point Networks](#ospfv2---point-to-point-networks)
+          * [Network Command Syntax](#network-command-syntax)
+          * [Configure OSPF With Network Command](#configure-ospf-with-network-command)
+          * [Use Entire Gigabit Interfaces](#use-entire-gigabit-interfaces)
+          * [Configure OSPF with ip ospf](#configure-ospf-with-ip-ospf)
 
     
 ## Cisco Cheatsheet & Snippets
@@ -766,3 +775,39 @@ _Verify_
 show ip proto | include Router ID
 ```
 #### OSPFv2 - Point-to-Point Networks
+
+##### Network Command Syntax
+
+`Router(config-router)# network network-address wildcard-mask area area-id`
+
+##### Configure OSPF With Network Command
+
+The following configures a trianngle of 3 routers connected to
+each other as an OSPF point to point network.
+
+```
+conf t
+router ospf 10
+network 10.10.1.0 0.0.0.255 area 0
+network 10.10.1.4 0.0.0.3 area 0
+network 10.10.1.12 0.0.0.3 area 0
+end
+```
+
+##### Use Entire Gigabit Interfaces
+
+```
+conf t
+router ospf 10
+network 10.10.1.1 0.0.0.0 area 0
+network 10.10.1.5 0.0.0.0 area 0
+network 10.10.1.14 0.0.0.0 area 0
+end
+```
+
+##### Configure OSPF with `ip ospf`
+
+Configure OSPF directly on the interfaces rather with with the network
+command.
+
+Syntax: `Router(config-if)# ip ospf <process-id> area <area-id>`
