@@ -21,9 +21,7 @@ Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included 
     * [Routing](#routing)
     * [Spanning Tree Protocol](#spaning-tree-protocol)
     
-  * [Advanced Networking](#advanced-networking)<br>
-    Enterprise Networking , Security, and Automation
-    
+  * [Advanced Networking](#advanced-networking)
 
 ## Full Navigation
 
@@ -709,16 +707,18 @@ show dtp interface gi0/1
 
 ## Advanced Networking
 
-### OSPFv2 - Router ID
+### OSPFv2
 
-#### All Commands
+#### OSPF Router IDs
+
+##### All Commands
 
 ```
 show ip ospf neighbor
 show ip ospf database 
 ```
 
-#### Enable router OSPF process
+##### Enable router OSPF process
 
 Starting Mode: Global, Non-enabled
 
@@ -728,7 +728,7 @@ conf t
 router ospf 10
 ```
 
-#### Configure Loopback
+##### Configure Loopback
 
 ```
 enable
@@ -738,7 +738,7 @@ ip addr 1.1.1.1 255.255.255.255
 end
 ```
 
-#### Configure OSPF Router ID
+##### Configure OSPF Router ID
 
 _replace `1.1.1.1` with desired id_
 ```
@@ -748,7 +748,7 @@ router-id 1.1.1.1
 end
 ```
 
-#### Modify OSPF router ID
+##### Modify OSPF router ID
 
 _Prompt confirmation with 'y' needed_
 
@@ -765,3 +765,4 @@ _Verify_
 ```
 show ip proto | include Router ID
 ```
+#### OSPFv2 - Point-to-Point Networks
