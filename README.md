@@ -717,3 +717,13 @@ show dtp interface gi0/1
 show ip ospf neighbor
 show ip ospf database 
 ```
+
+**Enable router OSPF process**
+
+Starting Mode: Global, Non-enabled
+
+```
+enable
+conf t
+router ospf 10
+```
