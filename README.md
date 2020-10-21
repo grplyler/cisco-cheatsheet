@@ -709,7 +709,7 @@ show dtp interface gi0/1
 
 ## Advanced Networking
 
-### OSPFv2
+### OSPFv2 - Router ID
 
 #### All Commands
 
@@ -718,7 +718,7 @@ show ip ospf neighbor
 show ip ospf database 
 ```
 
-**Enable router OSPF process**
+#### Enable router OSPF process
 
 Starting Mode: Global, Non-enabled
 
@@ -726,4 +726,42 @@ Starting Mode: Global, Non-enabled
 enable
 conf t
 router ospf 10
+```
+
+#### Configure Loopback
+
+```
+enable
+conf t
+interface Loopback 1
+ip addr 1.1.1.1 255.255.255.255
+end
+```
+
+#### Configure OSPF Router ID
+
+_replace `1.1.1.1` with desired id_
+```
+conf t
+router ospf 10
+router-id 1.1.1.1
+end
+```
+
+#### Modify OSPF router ID
+
+_Prompt confirmation with 'y' needed_
+
+```
+conf t
+router ospf 10
+router-id 1.1.1.2
+end
+clear ip ospf process
+```
+
+_Verify_
+
+```
+show ip proto | include Router ID
 ```
