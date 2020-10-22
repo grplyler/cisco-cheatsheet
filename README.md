@@ -811,3 +811,61 @@ Configure OSPF directly on the interfaces rather with with the network
 command.
 
 Syntax: `Router(config-if)# ip ospf <process-id> area <area-id>`
+
+```
+R1(config)# router ospf 10
+R1(config-router)# no network 10.10.1.1 0.0.0.0 area 0
+R1(config-router)# no network 10.1.1.5 0.0.0.0 area 0
+R1(config-router)# no network 10.1.1.14 0.0.0.0 area 0
+R1(config-router)# interface GigabitEthernet 0/0/0
+R1(config-if)# ip ospf 10 area 0
+R1(config-if)# interface GigabitEthernet 0/0/1 
+R1(config-if)# ip ospf 10 area 0
+R1(config-if)# interface Loopback 0
+R1(config-if)# ip ospf 10 area 0
+R1(config-if)#
+```
+
+##### Make OSPF Interfaces Passive
+
+```
+conf t
+router ospf 10
+passive-interface loopback 0
+end
+```
+
+```
+conf t
+router ospf 10
+passive-interface Gi0/0/0
+end
+```
+
+##### Find Designated Router and Backup
+
+```
+show ip ospf interface GigabitEthernet 0/0/0
+```
+
+##### Change OSPF from Broadcast to Point-to-Point
+
+```
+conf t
+interface GigabitEthernet 0/0/0
+ip ospf network point-to-point
+```
+
+##### Loopback and P2P Networks
+
+Loobacks can be used to simulate real LAN networks
+
+```
+conf t
+interface Loopback 0
+ip ospf network point-to-point
+```
+
+```
+show ip route | include 10.10.1
+```
