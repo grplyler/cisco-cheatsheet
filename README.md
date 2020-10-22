@@ -1,10 +1,8 @@
 # Cisco Cheetsheet
 
-**Cisco CLI Reference, Howtos, Tools**
+**Cisco CLI Reference, Howtos, and Tools**
 
 _Warning, use at your own risk. I created these scripts with an educational mindset while studying for my CCNA_
-
-Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included for backing up and restoring your config (and also when kids delete the IOS)
 
 ## Quick Navigtation
 
