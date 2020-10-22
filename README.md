@@ -953,4 +953,52 @@ show ip route | include 10.10.1
 
 ### Install Packet Tracer on Fedora Workstation
 
-_Under Construction_
+(Credit for this howto goes to `philpinch` from the [Fedora Forums](https://ask.fedoraproject.org/t/how-to-install-new-cisco-packet-tracer-7-3-on-fedora-31-workstation/6047))
+
+**1. Log into the Fedora GNOME Desktop**
+
+Remove old version of PacketTracer (if necessary):
+```
+rm -rf /opt/pt
+rm -rf /usr/share/applications/cisco-pt7.desktop
+rm -rf /usr/share/applications/cisco-ptsa7.desktop
+rm -rf /usr/share/icons/hicolor/48x48/apps/pt7.png
+```
+
+**2. Download from the netacad web site the PacketTracer_730_amd64.deb package.**
+
+Open a terminal :
+
+```
+mkdir -p tmp/pt730
+```
+
+copy the PacketTracer_730_amd64.deb package to tmp/pt730
+
+
+**4. We’re going to extract the deb file in this folder:**
+```
+cd tmp/pt730
+ar -xv PacketTracer_730_amd64.deb
+mkdir control
+tar -C control -Jxf control.tar.xz
+mkdir data
+tar -C data -Jxf data.tar.xz
+```
+
+**5. Copy PacketTracer files to install it:**
+```
+cd data
+cp -r usr /
+cp -r opt /
+```
+
+**6. Configure Gnome Environment:**
+```
+sudo xdg-desktop-menu install /usr/share/applications/cisco-pt7.desktop
+sudo xdg-desktop-menu install /usr/share/applications/cisco-ptsa7.desktop
+sudo update-mime-database /usr/share/mime
+sudo gtk-update-icon-cache --force --ignore-theme-index /usr/share/icons/gnome
+sudo xdg-mime default cisco-ptsa7.desktop x-scheme-handler/pttp
+ln -sf /opt/pt/packettracer /usr/local/bin/packettracer
+```
