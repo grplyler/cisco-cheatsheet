@@ -14,6 +14,7 @@ Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included 
   - [Assign Static IP to Interface](#assign-static-ip-to-interface)
   - [Snippet: Enable Router DHCP Server](#snippet-enable-router-dhcp-server)
   - [Snippet: Enable Switch DHCP Server](#snippet-enable-switch-dhcp-server)
+  - [Nuking (ROMMON, Password Recovery, etc)](#nuking-rommon-password-recovery-etc)
   
 
 ### General Sections
@@ -237,7 +238,7 @@ copy startup-config ftp://192.168.1.10/config.txt
 copy ftp://192.168.1.10/config.txt running-config
 ```
 
-#### Nuking (Password Recovery)
+#### Nuking (ROMMON, Password Recovery, etc)
 
 *Perform a Boot Interupt to Recover a lost or unknown password*
 
