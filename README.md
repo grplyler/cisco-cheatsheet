@@ -106,8 +106,13 @@ Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included 
         * [Loopback and P2P Networks](#loopback-and-p2p-networks)
   * [How To's](#how-tos)
     + [FTP Server Usage](#ftp-server-usage)
-    + [Install Packet Tracer on Fedora Workstation](#install-packet-tracer-on-fedora-workstation)
-    + [File Transfer Over Console (linux / xmodem)](#file-transfer-over-console-linux--xmodem)
+    + [Linux File Transfer Over Console (minicom / xmodem)](#linux-file-transfer-over-console-minicom--xmodem)
+    + [Windows File Transfer Over Console ( HyperTerminal / xmodem)](#windows-file-transfer-over-console--hyperterminal--xmodem)
+  * [Tools](#tools)
+    + [Subnetting/Calcuation](#subnettingcalcuation)
+      - [ipcalc (*nix)](#ipcalc-nix)
+      - [sipcalc (*nix)](#sipcalc-nix)
+      - [whatmask (*nix)](#whatmask-nix)
     
 ## Basic Networking
 
@@ -1004,6 +1009,95 @@ sudo xdg-mime default cisco-ptsa7.desktop x-scheme-handler/pttp
 ln -sf /opt/pt/packettracer /usr/local/bin/packettracer
 ```
 
-### File Transfer Over Console (linux / xmodem)
+### Linux File Transfer Over Console (minicom / xmodem)
 
 _Howto comming soon!_
+
+### Windows File Transfer Over Console ( HyperTerminal / xmodem)
+
+_Howto comming soon!_
+
+## Tools
+
+### Subnetting/Calcuation
+
+#### ipcalc (*nix)
+
+Debian/Ubuntu
+
+```
+apt install ipcalc
+```
+
+Fedora
+
+```
+dnf install ipcalc
+```
+
+```
+yum install ipcalc
+```
+
+#### sipcalc (*nix)
+
+Debian/Ubuntu
+
+```
+apt install sipcalc
+```
+
+Fedora
+
+```
+dnf install sipcalc
+```
+
+CentOS/RHEL
+
+```
+yum install sipcalc
+```
+
+#### whatmask (*nix)
+
+**Example Usage**
+
+```
+$ whatmask 10.0.1.12/30
+
+------------------------------------------------
+           TCP/IP NETWORK INFORMATION
+------------------------------------------------
+IP Entered = ..................: 10.0.1.12
+CIDR = ........................: /30
+Netmask = .....................: 255.255.255.252
+Netmask (hex) = ...............: 0xfffffffc
+Wildcard Bits = ...............: 0.0.0.3
+------------------------------------------------
+Network Address = .............: 10.0.1.12
+Broadcast Address = ...........: 10.0.1.15
+Usable IP Addresses = .........: 2
+First Usable IP Address = .....: 10.0.1.13
+Last Usable IP Address = ......: 10.0.1.14
+```
+
+**Install**
+
+Debian/Ubuntu
+
+```
+apt install whatmask
+```
+
+Fedora
+
+```
+dnf install whatmask
+```
+
+CentOS/RHEL
+
+```
+yum install whatmask
+```
