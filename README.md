@@ -1,8 +1,8 @@
-# Cisco Utils
+# Cisco Cheetsheet
 
-**Warning, use at your own risk. I created these scripts with an educational mindset while studying for my CCNA**
+**Cisco CLI Reference, Howtos, Tools**
 
-A Cisco Cheatsheet: Commands and Snippets for bootstrapping, boilerplate, configuration and hardening of Cisco routers and switches.
+_Warning, use at your own risk. I created these scripts with an educational mindset while studying for my CCNA_
 
 Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included for backing up and restoring your config (and also when kids delete the IOS)
 
