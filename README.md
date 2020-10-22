@@ -18,11 +18,11 @@ Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included 
   
 
 ### General Sections
-  * Basic Networking
+  * [Basic Networking](#basic-networking)
     + [Basic Setup](#setup)
     + [Interfaces](#interfaces)
     + [DHCP](#dhcp)
-  * Intermediate Networking
+  * [Intermediate Networking](#intermediate-networking)
     + [VLANs](#vlans)
     + [Trunks](#trunks)
     + [Etherchannel](#etherchannel)
