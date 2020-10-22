@@ -2,12 +2,11 @@
 
 **Warning, use at your own risk. I created these scripts with an educational mindset while studying for my CCNA**
 
-A Cisco Cheatsheet for bootstrapping, boilerplate, hardening, and configuring Cisco routers and switches.
+A Cisco Cheatsheet: Commands and Snippets for bootstrapping, boilerplate, configuration and hardening of Cisco routers and switches.
 
-Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included for backing up and restoring your config
+Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included for backing up and restoring your config (and also when kids delete the IOS)
 
 ## Quick Navigtation
----
 
 ### Quick Snippets & Scripts
   - [Intialize](#intialize)
@@ -36,7 +35,6 @@ Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included 
     + [Install Packet Tracer on Fedora Workstation](#install-packet-tracer-on-fedora-workstation)
 
 ## Full Navigation
----
 
   * [Basic Networking](#basic-networking)
     + [Setup](#setup)
