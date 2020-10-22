@@ -19,22 +19,21 @@ Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included 
 
 ### General Sections
   * Basic Networking
-    * [Basic Setup](#setup)
-    * [Interfaces](#interfaces)
-    * [DHCP](#dhcp)
+    + [Basic Setup](#setup)
+    + [Interfaces](#interfaces)
+    + [DHCP](#dhcp)
   * Intermediate Networking
-    * [VLANs](#vlans)
-    * [Trunks](#trunks)
-    * [Etherchannel](#etherchannel)
-    * [Dynamic Trunking Protocol (DTP)](#dtp-dynamic-trunking-protocol)
-    * [Routing](#routing)
-    * [Spanning Tree Protocol](#spaning-tree-protocol)
-    
+    + [VLANs](#vlans)
+    + [Trunks](#trunks)
+    + [Etherchannel](#etherchannel)
+    + [Dynamic Trunking Protocol (DTP)](#dtp-dynamic-trunking-protocol)
+    + [Routing](#routing)
+    + [Spanning Tree Protocol](#spaning-tree-protocol)
   * [Advanced Networking](#advanced-networking)
-    * [OSPFv2](#ospfv2)
+    + [OSPFv2](#ospfv2)
   * [Utils](#utils)
-    * [FTP Server](#ftp-server-usage)
-    * [Install Packet Tracer on Fedora Workstation](#install-packet-tracer-on-fedora-workstation)
+    + [FTP Server](#ftp-server-usage)
+    + [Install Packet Tracer on Fedora Workstation](#install-packet-tracer-on-fedora-workstation)
 
 ## Full Navigation
 ---
