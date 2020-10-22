@@ -7,8 +7,17 @@ A Cisco Cheatsheet for bootstrapping, boilerplate, hardening, and configuring Ci
 Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included for backing up and restoring your config
 
 ## Quick Navigtation
+---
 
-### Sections
+### Quick Snippets & Scripts
+  - [Intialize](#intialize)
+  - [Basic Config](#basic-config)
+  - [Assign Static IP to Interface](#assign-static-ip-to-interface)
+  - [Snippet: Enable Router DHCP Server](#snippet-enable-router-dhcp-server)
+  - [Snippet: Enable Switch DHCP Server](#snippet-enable-switch-dhcp-server)
+  
+
+### General Sections
   * Basic Networking
     * [Basic Setup](#setup)
     * [Interfaces](#interfaces)
@@ -23,74 +32,91 @@ Includes a **Handy** [FTP Server](#ftp-server-usage) (python pftpdlib) included 
     
   * [Advanced Networking](#advanced-networking)
     * [OSPFv2](#ospfv2)
+  * [Utils](#utils)
+    * [FTP Server](#ftp-server-usage)
+    * [Install Packet Tracer on Fedora Workstation](#install-packet-tracer-on-fedora-workstation)
 
 ## Full Navigation
+---
 
-* [Setup](#setup)
-  * [Intialize](#intialize)
-  * [Basic Config](#basic-config)
-  * [Basic Security](#basic-security)
-  * [Configure SSH](#configure-ssh)
-  * [Set Clock](#set-clock)
-  * [Basic Hardening (Work Needed)](#basic-hardening-work-needed)
-  * [Backup config](#backup-config)
-  * [Restore Config](#restore-config)
-  * [Nuking (Password Recovery)](#nuking-password-recovery)
-* [Interfaces](#interfaces)
-  * [Interface Selection](#interface-selection)
-  * [Interface Ranges](#interface-ranges)
-* [Interface Verification](#interface-verification)
-  * [Remove IP Addresses](#remove-ip-addresses)
-* [VLANs](#vlans)
-  * [VLAN Creation](#vlan-creation)
-  * [Port Assignment](#port-assignment)
-  * [IP Assignemnt](#ip-assignemnt)
-  * [Verification](#verification)
-  * [Voice and Data VLAN](#voice-and-data-vlan)
-  * [Management VLAN](#management-vlan)
-  * [Delete VLANS on file](#delete-vlans-on-file)
-  * [Delete VLANS in memory](#delete-vlans-in-memory)
-  * [Inter-VLAN Routing](#inter-vlan-routing)
-* [DHCP](#dhcp)
-  * [Create DHCP Pool](#create-dhcp-pool)
-  * [DHCP Verification](#dhcp-verification)
-  * [Disable DHCP](#disable-dhcp)
-  * [Re-enabled DHCP](#re-enabled-dhcp)
-  * [Create VLAN DHCP](#create-vlan-dhcp)
-  * [Verify DHCP Pool](#verify-dhcp-pool)
-  * [Delete DHCP Pool](#delete-dhcp-pool)
-* [Trunks](#trunks)
-  * [Create multi-switch vlan trunk](#create-multi-switch-vlan-trunk)
-  * [Trunk Verification](#trunk-verification)
-* [EtherChannel](#etherchannel)
-  * [Configure EtherChannel](#configure-etherchannel)
-  * [Verify EtherChannel](#verify-etherchannel)
-* [DTP (Dynamic Trunking Protocol)](#dtp-dynamic-trunking-protocol)
-  * [Configure DTP](#configure-dtp)
-  * [Disable DTP](#disable-dtp)
-  * [Verify DTP](#verify-dtp)
-* [FTP Server Usage](#ftp-server-usage)
-* [Advanced Networking](#advanced-networking)
-    * [OSPFv2](#ospfv2)
-      * [OSPF Router IDs](#ospf-router-ids)
-          * [All Commands](#all-commands)
-          * [Enable router OSPF process](#enable-router-ospf-process)
-          * [Configure Loopback](#configure-loopback)
-          * [Configure OSPF Router ID](#configure-ospf-router-id)
-          * [Modify OSPF router ID](#modify-ospf-router-id)
-      * [OSPFv2 - Point-to-Point Networks](#ospfv2---point-to-point-networks)
-          * [Network Command Syntax](#network-command-syntax)
-          * [Configure OSPF With Network Command](#configure-ospf-with-network-command)
-          * [Use Entire Gigabit Interfaces](#use-entire-gigabit-interfaces)
-          * [Configure OSPF with ip ospf](#configure-ospf-with-ip-ospf)
-
+  * [Basic Networking](#basic-networking)
+    + [Setup](#setup)
+      - [Intialize](#intialize)
+      - [Basic Switch Config](#basic-switch-config)
+      - [Basic Router Config](#basic-router-config)
+      - [Basic Security](#basic-security)
+      - [Configure SSH](#configure-ssh)
+      - [Set Clock](#set-clock)
+      - [Basic Hardening (Work Needed)](#basic-hardening-work-needed)
+      - [Backup config](#backup-config)
+      - [Restore Config](#restore-config)
+      - [Nuking (Password Recovery)](#nuking-password-recovery)
+    + [Interfaces](#interfaces)
+      - [Interface Selection](#interface-selection)
+      - [Assign Static IP to Interface](#assign-static-ip-to-interface)
+      - [Interface Ranges](#interface-ranges)
+    + [Interface Verification](#interface-verification)
+      - [Remove IP Addresses](#remove-ip-addresses)
+    + [DHCP](#dhcp)
+      - [Snippet: Enable Router DHCP Server](#snippet-enable-router-dhcp-server)
+      - [Snippet: Enable Switch DHCP Server](#snippet-enable-switch-dhcp-server)
+      - [Create DHCP Pool](#create-dhcp-pool)
+      - [DHCP Verification](#dhcp-verification)
+      - [Disable DHCP](#disable-dhcp)
+      - [Re-enabled DHCP](#re-enabled-dhcp)
+      - [Create VLAN DHCP](#create-vlan-dhcp)
+      - [Verify DHCP Pool](#verify-dhcp-pool)
+      - [Delete DHCP Pool](#delete-dhcp-pool)
+  * [Intermediate Networking](#intermediate-networking)
+    + [VLANs](#vlans)
+      - [VLAN Creation](#vlan-creation)
+      - [Port Assignment](#port-assignment)
+      - [IP Assignemnt](#ip-assignemnt)
+      - [Verification](#verification)
+      - [Voice and Data VLAN](#voice-and-data-vlan)
+      - [Management VLAN](#management-vlan)
+      - [Delete VLANS on file](#delete-vlans-on-file)
+      - [Delete VLANS in memory](#delete-vlans-in-memory)
+      - [Inter-VLAN Routing](#inter-vlan-routing)
+    + [Trunks](#trunks)
+      - [Create multi-switch vlan trunk](#create-multi-switch-vlan-trunk)
+      - [Trunk Verification](#trunk-verification)
+    + [EtherChannel](#etherchannel)
+      - [Configure EtherChannel](#configure-etherchannel)
+      - [Verify EtherChannel](#verify-etherchannel)
+    + [DTP (Dynamic Trunking Protocol)](#dtp-dynamic-trunking-protocol)
+      - [Configure DTP](#configure-dtp)
+      - [Disable DTP](#disable-dtp)
+      - [Verify DTP](#verify-dtp)
+  * [Advanced Networking](#advanced-networking)
+    + [OSPFv2](#ospfv2)
+      - [OSPF Router IDs](#ospf-router-ids)
+        * [All Commands](#all-commands)
+        * [Enable router OSPF process](#enable-router-ospf-process)
+        * [Configure Loopback](#configure-loopback)
+        * [Configure OSPF Router ID](#configure-ospf-router-id)
+        * [Modify OSPF router ID](#modify-ospf-router-id)
+      - [OSPF - Point-to-Point Networks](#ospf---point-to-point-networks)
+        * [Network Command Syntax](#network-command-syntax)
+        * [Configure OSPF With Network Command](#configure-ospf-with-network-command)
+        * [Use Entire Gigabit Interfaces](#use-entire-gigabit-interfaces)
+        * [Configure OSPF with `ip ospf`](#configure-ospf-with-ip-ospf)
+        * [Make OSPF Interfaces Passive](#make-ospf-interfaces-passive)
+        * [Find Designated Router and Backup](#find-designated-router-and-backup)
+        * [Change OSPF from Broadcast to Point-to-Point](#change-ospf-from-broadcast-to-point-to-point)
+        * [Loopback and P2P Networks](#loopback-and-p2p-networks)
+  * [How To's](#how-tos)
+    + [FTP Server Usage](#ftp-server-usage)
+    + [Install Packet Tracer on Fedora Workstation](#install-packet-tracer-on-fedora-workstation)
     
-## Cisco Cheatsheet & Snippets
+## Basic Networking
 
 ### Setup
 ---
 
 #### Intialize
+
+These commands wipe all config and reboot the device
 
 ```
 erase startup-config
@@ -100,12 +126,26 @@ reload
 
 **Note:** Remeber to say "no" to saving running config on reload. If you say yes, running config will be saved and you wont be working with fresh config on reload.
 
-#### Basic Config
+#### Basic Switch Config
 
 ```
 configure terminal
 no ip domain-lookup
 hostname S1
+line console 0
+logging synchronous
+exit
+banner motd $ Authorized Access Only! And Godzilla will beat Kong any day $
+exit
+copy running-config startup-config
+```
+
+#### Basic Router Config
+
+```
+configure terminal
+no ip domain-lookup
+hostname R1
 line console 0
 logging synchronous
 exit
@@ -242,6 +282,14 @@ ip addr 192.168.10.11 255.255.255.0
 end
 ```
 
+#### Assign Static IP to Interface
+
+```
+cont t
+int g0/0
+ip addr 10.0.0.10 255.255.255.0
+```
+
 #### Interface Ranges
 
 *Assign and IP address to a port*
@@ -299,144 +347,38 @@ no ip addr
 end
 ```
 
-### VLANs
----
-
-#### VLAN Creation
-
-```
-conf t
-vlan 10
-name Faculty
-exit
-```
-
-```
-conf t
-vlan 20
-name Students
-exit
-```
-
-#### Port Assignment
-
-```
-conf t
-interface range Fa0/1-12
-switchport mode access
-switchport access vlan 10
-end
-```
-
-```
-conf t interface range Fa0/13-24
-switchport mode access
-switchport access vlan 20
-end
-```
-
-```
-conf t
-interface Gi0/1
-switchport mode access
-switchport access vlan 99
-end
-```
-
-#### IP Assignemnt
-
-```
-cont t
-int vlan 99
-ip address 10.0.0.1 255.255.255.0
-end
-```
-
-#### Verification
-
-```
-show vlan brief
-```
-
-#### Voice and Data VLAN
-
-*Assuming Data on VLAN 10, Voice on VLAN 20*
-
-```
-conf t
-int Fa0/4
-switchport mode access
-switchport access vlan 10
-switchport voice vlan 20
-end
-```
-
-#### Management VLAN
-
-```
-conf t
-vlan 99
-name Management
-exit
-interface Fa0/24
-switchport mode access
-switchport access vlan 99
-exit
-int vlan 99
-ip addr 10.0.0.1 255.255.255.0
-end
-```
-
-#### Delete VLANS on file
-
-```
-delete vlan.dat
-```
-
-#### Delete VLANS in memory
-*Warning: Make sure you move ports to another vlan or the will be unsable*
-
-```
-conf t
-no vlan 10
-no vlan 20
-end
-```
-
-#### Inter-VLAN Routing
-
-*Creates multiple sub-interfaces on a router port to enable inter-vlan routing.*
-
-*Note: `encapsulation dot1q` must be called on a sub interface before an IP can be assigned to it.*
-
-```
-conf t
-interface G0/0/1.10
-description Default Gateway for VLAN 10
-encapsulation dot1Q 10
-ip add 192.168.10.1 255.255.255.0
-exit
-
-interface G0/0/1.20
-description Default Gateway for VLAN 20
-encapsulation dot1Q 20
-ip addr 192.168.20.1 255.255.255.0
-exit
-
-interface G0/0/1.99
-description Default Gateway for VLAN 99
-encapsulation dot1Q 99
-ip addr 192.168.99.1 255.255.255.0
-exit
-
-interface G0/0/1
-description Trunk link to S1
-no shut
-end
-```
-
 ### DHCP
 ---
+
+#### Snippet: Enable Router DHCP Server
+
+This snippet configures a DHCP Server on R1 and will hand out
+IPs on the `10.0.0.1/24` network. Great for using an [FTP Server](#ftp-server-usage) with.
+
+```
+conf t
+ip domain name cisco.com
+ip dhcp excluded-address 10.0.0.1
+ip dhcp pool test
+network 10.0.0.0 255.255.255.0
+default-router 10.0.0.1
+end
+```
+
+#### Snippet: Enable Switch DHCP Server
+
+```
+ip dhcp pool test
+network 10.0.0.0 255.255.255.0
+domain-name cisco.com
+default-router 10.0.0.1
+dns-server 10.0.0.1
+lease 4
+ip dhcp snooping
+ip dhcp-server 10.0.0.3
+interface vlan 1
+ip address 10.0.0.3
+```
 
 #### Create DHCP Pool
 
@@ -591,6 +533,144 @@ no ip dhcp pool managementpool
 end
 ```
 
+## Intermediate Networking
+
+### VLANs
+---
+
+#### VLAN Creation
+
+```
+conf t
+vlan 10
+name Faculty
+exit
+```
+
+```
+conf t
+vlan 20
+name Students
+exit
+```
+
+#### Port Assignment
+
+```
+conf t
+interface range Fa0/1-12
+switchport mode access
+switchport access vlan 10
+end
+```
+
+```
+conf t interface range Fa0/13-24
+switchport mode access
+switchport access vlan 20
+end
+```
+
+```
+conf t
+interface Gi0/1
+switchport mode access
+switchport access vlan 99
+end
+```
+
+#### IP Assignemnt
+
+```
+cont t
+int vlan 99
+ip address 10.0.0.1 255.255.255.0
+end
+```
+
+#### Verification
+
+```
+show vlan brief
+```
+
+#### Voice and Data VLAN
+
+*Assuming Data on VLAN 10, Voice on VLAN 20*
+
+```
+conf t
+int Fa0/4
+switchport mode access
+switchport access vlan 10
+switchport voice vlan 20
+end
+```
+
+#### Management VLAN
+
+```
+conf t
+vlan 99
+name Management
+exit
+interface Fa0/24
+switchport mode access
+switchport access vlan 99
+exit
+int vlan 99
+ip addr 10.0.0.1 255.255.255.0
+end
+```
+
+#### Delete VLANS on file
+
+```
+delete vlan.dat
+```
+
+#### Delete VLANS in memory
+*Warning: Make sure you move ports to another vlan or the will be unsable*
+
+```
+conf t
+no vlan 10
+no vlan 20
+end
+```
+
+#### Inter-VLAN Routing
+
+*Creates multiple sub-interfaces on a router port to enable inter-vlan routing.*
+
+*Note: `encapsulation dot1q` must be called on a sub interface before an IP can be assigned to it.*
+
+```
+conf t
+interface G0/0/1.10
+description Default Gateway for VLAN 10
+encapsulation dot1Q 10
+ip add 192.168.10.1 255.255.255.0
+exit
+
+interface G0/0/1.20
+description Default Gateway for VLAN 20
+encapsulation dot1Q 20
+ip addr 192.168.20.1 255.255.255.0
+exit
+
+interface G0/0/1.99
+description Default Gateway for VLAN 99
+encapsulation dot1Q 99
+ip addr 192.168.99.1 255.255.255.0
+exit
+
+interface G0/0/1
+description Trunk link to S1
+no shut
+end
+```
+
 ### Trunks
 ---
 
@@ -686,34 +766,6 @@ end
 show dtp interface gi0/1
 ```
 
-## FTP Server Usage
-
-1. Clone the repo: 
-
-    ```
-    git clone https://github.com/grplyler/cisco-utils
-    ```
-    
-2. Install python requirements (for ftp server):
-
-    ```
-    pip install -r requirements.txt
-    ```
-    
-3. Run python ftp_server.py
-
-    ```
-    python3 ftp_server.py
-    ```
-    
-4. Pull a script onto a network device (WARNING: Backup to avoid any losses)
-
-    ```
-    Switch#> copy ftp://192.168.1.10/sw_base.txt running-config
-    ```
-    
-    *Replace 192.168.1.10 with the IP of the computer connected to the switch or router.*
-
 ## Advanced Networking
 
 ### OSPFv2
@@ -774,7 +826,7 @@ _Verify_
 ```
 show ip proto | include Router ID
 ```
-#### OSPFv2 - Point-to-Point Networks
+#### OSPF - Point-to-Point Networks
 
 ##### Network Command Syntax
 
@@ -869,3 +921,37 @@ ip ospf network point-to-point
 ```
 show ip route | include 10.10.1
 ```
+
+## How To's
+
+### FTP Server Usage
+
+1. Clone the repo: 
+
+    ```
+    git clone https://github.com/grplyler/cisco-utils
+    ```
+    
+2. Install python requirements (for ftp server):
+
+    ```
+    pip install -r requirements.txt
+    ```
+    
+3. Run python ftp_server.py
+
+    ```
+    python3 ftp_server.py
+    ```
+    
+4. Pull a script onto a network device (WARNING: Backup to avoid any losses)
+
+    ```
+    Switch#> copy ftp://192.168.1.10/sw_base.txt running-config
+    ```
+    
+    *Replace 192.168.1.10 with the IP of the computer connected to the switch or router.*
+
+### Install Packet Tracer on Fedora Workstation
+
+_Under Construction_
