@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# helper script to configure screen
+# for smoother access to the serial port
+# over a USB connection
+
+# Usage:
+#      serial <tty-usb-id>
+#
+# Arguments:
+#      <tty-usb-id>     The number in /dev/ttyUSB[X]
+
+echo "Attaching to /dev/ttyUSB$1"
+
+screen /dev/ttyUSB$1 9600,cs8,-parenb,-cstopb,-hupcl
