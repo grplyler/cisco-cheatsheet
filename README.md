@@ -1180,9 +1180,29 @@ ln -sf /opt/pt/packettracer /usr/local/bin/packettracer
 
 _under construction_
 
-### Console Access with `stty` on Linux
+### Configure Serial Port with `stty` on Linux
 
-_under construction_
+Set the default configuration with stty to cisco console default, 9600 bps, 8N1, no flow control:
+
+```
+stty -F /dev/serial_port cs8 -parenb -cstopb -echo raw speed 9600
+
+ # What the arguments mean:
+ #   cs8:     8 data bits
+ #   -parenb: No parity (because of the '-')
+ #   -cstopb: 1 stop bit (because of the '-')
+ #   -echo: Without this option, Linux will sometimes automatically send back
+ #          any received characters, even if you are just reading from the serial
+ #          port with a command like 'cat'. Some terminals will print codes
+ #          like "^B" when receiving back a character like ASCII ETX (hex 03).```
+
+or
+
+```
+stty -F /dev/ttyUSB0 9600 litout -crtscts
+```
+
+
 
 ### Console Access with Screen on Linux
 
