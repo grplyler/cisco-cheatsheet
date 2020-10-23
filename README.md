@@ -14,6 +14,8 @@ _Warning, use at your own risk. I created these scripts with an educational mind
   - [Snippet: Enable Switch DHCP Server](#snippet-enable-switch-dhcp-server)
   - [Nuking (ROMMON, Password Recovery, etc)](#nuking-rommon-password-recovery-etc)
   - [Howto: File Transfer Over Console (linux / xmodem)](#file-transfer-over-console-linux--xmodem)
+  - [Access Console over USB on Linux](#access-console-over-usb-on-linux)
+
   
 
 ### General Sections
