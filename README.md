@@ -40,13 +40,15 @@ _Warning, use at your own risk. I created these scripts with an educational mind
       - [Intialize](#intialize)
       - [Basic Switch Config](#basic-switch-config)
       - [Basic Router Config](#basic-router-config)
+      - [Basic Config with Password Security](#basic-config-with-password-security)
       - [Basic Security](#basic-security)
       - [Configure SSH](#configure-ssh)
       - [Set Clock](#set-clock)
       - [Basic Hardening (Work Needed)](#basic-hardening-work-needed)
-      - [Backup config](#backup-config)
+      - [Backup config over FTP](#backup-config-over-ftp)
+      - [Backup config over console](#backup-config-over-console)
       - [Restore Config](#restore-config)
-      - [Nuking (Password Recovery)](#nuking-password-recovery)
+      - [Nuking (ROMMON, Password Recovery, etc)](#nuking-rommon-password-recovery-etc)
     + [Interfaces](#interfaces)
       - [Interface Selection](#interface-selection)
       - [Assign Static IP to Interface](#assign-static-ip-to-interface)
@@ -172,6 +174,35 @@ exit
 copy running-config startup-config
 ```
 
+#### Basic Config with Password Security
+
+_pastable_
+
+```
+configure terminal
+no ip domain-lookup
+hostname R1
+line console 0
+logging synchronous
+exit
+banner motd $ Authorized Access Only! And Godzilla will beat Kong any day $
+exit
+copy running-config startup-config
+conf t
+enable secret class
+line console 0
+password cisco
+login
+exit
+line vty 0 4
+password cisco
+login
+exit
+service password-encryption
+end
+copy running-config startup-config
+```
+
 #### Basic Security
 
 ```
@@ -244,7 +275,7 @@ ip ssh authentication-retries 3
 end
 ```
 
-#### Backup config
+#### Backup config over FTP
 
 *Using included [FTP server](#ftp-server-usage)*
 
@@ -252,6 +283,10 @@ end
 copy running-config startup-config
 copy startup-config ftp://192.168.1.10/config.txt
 ```
+
+#### Backup config over console
+
+_coming soon_
 
 #### Restore Config
 ```
