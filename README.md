@@ -59,6 +59,8 @@ _Warning, use at your own risk. I created these scripts with an educational mind
       - [Interface Ranges](#interface-ranges)
     + [Interface Verification](#interface-verification)
       - [Remove IP Addresses](#remove-ip-addresses)
+    + [Console Port](#console-port)
+      - [Change Console Baudrate](#change-console-baudrate)
     + [DHCP](#dhcp)
       - [Snippet: Enable Router DHCP Server](#snippet-enable-router-dhcp-server)
       - [Snippet: Enable Switch DHCP Server](#snippet-enable-switch-dhcp-server)
@@ -402,6 +404,24 @@ show ip int br
 conf t
 int f0/1
 no ip addr
+end
+```
+
+### Console Port
+
+#### Change Console Baudrate
+
+```
+conf t
+line con 0
+speed 115200
+end
+```
+
+```
+conf t
+line con 0
+speed 9600
 end
 ```
 
@@ -1184,6 +1204,12 @@ _under construction_
 Set the default configuration with stty to cisco console default, 9600 bps, 8N1, no flow control:
 
 ```
+stty -F /dev/ttyUSB0 9600 litout -crtscts
+```
+
+or:
+
+```
 stty -F /dev/ttyUSB0 cs8 -parenb -cstopb -echo raw speed 9600
 
  # What the arguments mean:
@@ -1193,13 +1219,9 @@ stty -F /dev/ttyUSB0 cs8 -parenb -cstopb -echo raw speed 9600
  #   -echo: Without this option, Linux will sometimes automatically send back
  #          any received characters, even if you are just reading from the serial
  #          port with a command like 'cat'. Some terminals will print codes
- #          like "^B" when receiving back a character like ASCII ETX (hex 03).```
+ #          like "^B" when receiving back a character like ASCII ETX (hex 03).
+ ```
 
-or
-
-```
-stty -F /dev/ttyUSB0 9600 litout -crtscts
-```
 
 
 

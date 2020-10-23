@@ -12,4 +12,10 @@
 
 echo "Attaching to /dev/ttyUSB$1"
 
-screen /dev/ttyUSB$1 9600,cs8,-parenb,-cstopb,-hupcl
+# Configure Serial Port
+# stty -F /dev/ttyUSB$1 9600 litout -crtscts
+
+sleep 1
+
+# Connect with screen
+screen /dev/ttyUSB$1 $2
