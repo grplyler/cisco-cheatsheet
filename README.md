@@ -1208,17 +1208,7 @@ Debian/Ubuntu
 apt install sipcalc
 ```
 
-Fedora
-
-```
-dnf install sipcalc
-```
-
-CentOS/RHEL
-
-```
-yum install sipcalc
-```
+_or replace `apt` with your package manager_
 
 #### whatmask (*nix)
 
@@ -1251,14 +1241,4 @@ Debian/Ubuntu
 apt install whatmask
 ```
 
-Fedora
-
-```
-dnf install whatmask
-```
-
-CentOS/RHEL
-
-```
-yum install whatmask
-```
+_or replace `apt` with your package manager_
