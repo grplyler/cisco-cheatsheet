@@ -1176,7 +1176,15 @@ sudo xdg-mime default cisco-ptsa7.desktop x-scheme-handler/pttp
 ln -sf /opt/pt/packettracer /usr/local/bin/packettracer
 ```
 
-### Access Console over USB on Linux
+### Console Access with `minicom` on Linux
+
+_under construction_
+
+### Console Access with `stty` on Linux
+
+_under construction_
+
+### Console Access with Screen on Linux
 
 For this you will need a USB console cable. These can be picked up
 on amazon for about $9-$12.
