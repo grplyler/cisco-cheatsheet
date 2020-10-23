@@ -31,6 +31,8 @@ _Warning, use at your own risk. I created these scripts with an educational mind
   * [Advanced Networking](#advanced-networking)
     + [OSPFv2](#ospfv2)
   * [How To's](#how-tos)
+    + [FTP Server Usage](#ftp-server-usage)
+    + [Access Console over USB on Linux](#access-console-over-usb-on-linux)
   * [Tools](#tools)
 
 ## Full Navigation
