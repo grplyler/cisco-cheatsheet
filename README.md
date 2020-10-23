@@ -121,6 +121,8 @@ _Warning, use at your own risk. I created these scripts with an educational mind
         * [Verify OSPF Interface Setting](#verify-ospf-interface-setting)
   * [How To's](#how-tos)
     + [FTP Server Usage](#ftp-server-usage)
+    + [Install Packet Tracer on Fedora Workstation](#install-packet-tracer-on-fedora-workstation)
+    + [Access Console over USB on Linux](#access-console-over-usb-on-linux)
     + [Linux File Transfer Over Console (minicom / xmodem)](#linux-file-transfer-over-console-minicom--xmodem)
     + [Windows File Transfer Over Console ( HyperTerminal / xmodem)](#windows-file-transfer-over-console--hyperterminal--xmodem)
   * [Tools](#tools)
@@ -1169,6 +1171,72 @@ sudo gtk-update-icon-cache --force --ignore-theme-index /usr/share/icons/gnome
 sudo xdg-mime default cisco-ptsa7.desktop x-scheme-handler/pttp
 ln -sf /opt/pt/packettracer /usr/local/bin/packettracer
 ```
+
+### Access Console over USB on Linux
+
+For this you will need a USB console cable. These can be picked up
+on amazon for about $9-$12.
+
+1. Connect your the USB console cable from the computers usb port to the cisco RJ-45 console port.
+
+2. Install the `screen` program if you dont already have it.
+
+```
+apt install screen
+```
+
+3. Find the USB device.
+
+If its the first USB serial device you plugged in, it should be `/dev/ttyUSB0`. The second one should be `/dev/ttyUSB1`, etc.
+
+You can verify with with `ls /dev | grep USB`
+
+4. Run `screen`
+
+You will need root access.
+
+```
+screen /dev/ttyUSB0
+```
+
+Running with a specific baudrate.
+
+```
+screen /dev/ttyUSB0 9600
+screen /dev/ttyUSB0 115200
+```
+
+To exit screen, hit `Ctrl-a`, `Ctrl-d`
+
+If you have trouble with the connection, e.g. it lags or is funky, cisco serial connections require the following settings by default:
+
+- `9600` baud
+- `8` data bits
+- `no` parity
+- `1` stop bit
+- `no` flow control
+
+To do that exactly with screen:
+
+```
+screen /dev/ttyS0 9600,cs8,-parenb,-cstopb,-hupcl
+screen /dev/ttyS0 19200,cs8,-parenb,-cstopb,-hupcl
+screen /dev/ttyS0 115200,cs8,-parenb,-cstopb,-hupcl
+```
+
+With `odd` parity:
+
+```
+screen /dev/ttyS0 9600,cs8,parenb,parodd,-cstopb,-hupcl
+```
+
+With `even` parity:
+
+```
+screen /dev/ttyS0 9600,cs8,parenb,-parodd,-cstopb,-hupcl
+```
+
+See more details at [http://www.noah.org/wiki/Screen_notes](http://www.noah.org/wiki/Screen_notes)
 
 ### Linux File Transfer Over Console (minicom / xmodem)
 
