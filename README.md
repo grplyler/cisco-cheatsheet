@@ -32,7 +32,7 @@ _Warning, use at your own risk. I created these scripts with an educational mind
     + [OSPFv2](#ospfv2)
   * [How To's](#how-tos)
   * [Tools](#tools)
-  
+
 ## Full Navigation
 
   * [Basic Networking](#basic-networking)
@@ -97,10 +97,26 @@ _Warning, use at your own risk. I created these scripts with an educational mind
         * [Configure OSPF With Network Command](#configure-ospf-with-network-command)
         * [Use Entire Gigabit Interfaces](#use-entire-gigabit-interfaces)
         * [Configure OSPF with `ip ospf`](#configure-ospf-with-ip-ospf)
-        * [Make OSPF Interfaces Passive](#make-ospf-interfaces-passive)
+        * [OSPF Passive Interfaces](#ospf-passive-interfaces)
         * [Find Designated Router and Backup](#find-designated-router-and-backup)
         * [Change OSPF from Broadcast to Point-to-Point](#change-ospf-from-broadcast-to-point-to-point)
         * [Loopback and P2P Networks](#loopback-and-p2p-networks)
+      - [Multiaccess OSPF Networks](#multiaccess-ospf-networks)
+        * [Configure OSPF Priority](#configure-ospf-priority)
+      - [Modifying Single Area OSPF](#modifying-single-area-ospf)
+        * [Adjusting Reference Bandwidth](#adjusting-reference-bandwidth)
+        * [Manually Set OSPF Link Cost](#manually-set-ospf-link-cost)
+        * [Show OSPF Hello Packet Intervals](#show-ospf-hello-packet-intervals)
+        * [Set OSPF Hello Packet Intervals](#set-ospf-hello-packet-intervals)
+        * [Set OSPF Dead Interval](#set-ospf-dead-interval)
+      - [OSPF Default Routes](#ospf-default-routes)
+        * [Propogate Default Route](#propogate-default-route)
+        * [Verify Propogated Default Route](#verify-propogated-default-route)
+      - [Verify Single-Area OSPF](#verify-single-area-ospf)
+        * [Verify OSPF Neighbors](#verify-ospf-neighbors)
+        * [Verify OSPF Protocols](#verify-ospf-protocols)
+        * [Verify OSPF Process Info](#verify-ospf-process-info)
+        * [Verify OSPF Interface Setting](#verify-ospf-interface-setting)
   * [How To's](#how-tos)
     + [FTP Server Usage](#ftp-server-usage)
     + [Linux File Transfer Over Console (minicom / xmodem)](#linux-file-transfer-over-console-minicom--xmodem)
@@ -880,7 +896,7 @@ R1(config-if)# ip ospf 10 area 0
 R1(config-if)#
 ```
 
-##### Make OSPF Interfaces Passive
+##### OSPF Passive Interfaces
 
 ```
 conf t
@@ -922,6 +938,119 @@ ip ospf network point-to-point
 
 ```
 show ip route | include 10.10.1
+```
+
+#### Multiaccess OSPF Networks
+
+##### Configure OSPF Priority
+
+```
+conf t
+int g0/0/1
+ip ospf priority 255
+end
+```
+
+Where `255` can be values from `0` to `255` with higher numbers making the router to be elected `DR`.
+
+#### Modifying Single Area OSPF
+
+##### Adjusting Reference Bandwidth
+
+```
+Router# router ospf 10
+Router(config-router) auto-cost reference bandwidth 1000
+```
+
+_Where 1000 is the speed of the link in Mpbs_
+Common Values: 10, 100, 1000
+
+##### Manually Set OSPF Link Cost
+
+```
+conf t
+int g0/0/1
+ip ospf cost 25
+interface l0
+ip ospf cost 15
+end
+```
+
+##### Show OSPF Hello Packet Intervals
+
+```
+show ip ospf int g0/0/1
+```
+
+##### Set OSPF Hello Packet Intervals
+
+```
+Router(config-if)# ip ospf hello-interval <seconds>
+```
+
+```
+conf t
+int g0/0/1
+ip ospf hello-interval 30
+end
+```
+
+Note: dead-interval automatically gets set as `hello-interval * 4`
+
+
+##### Set OSPF Dead Interval
+
+#### OSPF Default Routes
+
+##### Propogate Default Route
+
+```
+conf t
+ip route 0.0.0.0 0.0.0.0 loopback 1
+router ospf 10
+default-information originate
+```
+
+##### Verify Propogated Default Route
+
+```
+show ip route | begin Gateway
+```
+
+#### Verify Single-Area OSPF
+
+##### Verify OSPF Neighbors
+
+```
+show ip ospf neighbor
+```
+
+##### Verify OSPF Protocols
+
+```
+show ip protocols
+```
+
+##### Verify OSPF Process Info
+
+```
+show ip ospf
+```
+
+##### Verify OSPF Interface Setting
+
+```
+show ip ospf int g0/0/1
+show ip ospf int brief
+```
+
+Where `g0/0/1` is the interface you was to see OSPF information on.
+
+```
+conf t
+int g0/0/1
+ip ospf dead-interval 100
+end
 ```
 
 ## How To's
