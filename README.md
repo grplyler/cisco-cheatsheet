@@ -30,10 +30,9 @@ _Warning, use at your own risk. I created these scripts with an educational mind
     + [Spanning Tree Protocol](#spaning-tree-protocol)
   * [Advanced Networking](#advanced-networking)
     + [OSPFv2](#ospfv2)
-  * [Utils](#utils)
-    + [FTP Server](#ftp-server-usage)
-    + [Install Packet Tracer on Fedora Workstation](#install-packet-tracer-on-fedora-workstation)
-
+  * [How To's](#how-tos)
+  * [Tools](#tools)
+  
 ## Full Navigation
 
   * [Basic Networking](#basic-networking)
