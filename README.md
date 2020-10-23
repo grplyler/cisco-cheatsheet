@@ -1184,7 +1184,7 @@ _under construction_
 Set the default configuration with stty to cisco console default, 9600 bps, 8N1, no flow control:
 
 ```
-stty -F /dev/serial_port cs8 -parenb -cstopb -echo raw speed 9600
+stty -F /dev/ttyUSB0 cs8 -parenb -cstopb -echo raw speed 9600
 
  # What the arguments mean:
  #   cs8:     8 data bits
