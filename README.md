@@ -488,7 +488,7 @@ end
 
 ```
 show running-config | section dhcp
-shpw ip dhcp binding
+show ip dhcp binding
 show ip dhcp server statistics
 ```
 
