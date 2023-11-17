@@ -345,7 +345,7 @@ end
 #### Assign Static IP to Interface
 
 ```
-cont t
+conf t
 int g0/0
 ip addr 10.0.0.10 255.255.255.0
 ```
@@ -660,7 +660,7 @@ end
 #### IP Assignemnt
 
 ```
-cont t
+conf t
 int vlan 99
 ip address 10.0.0.1 255.255.255.0
 end
